@@ -102,7 +102,7 @@ class UnityController:
             log.error(f"Registry error listing modules: {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error listing modules: {e}")
+            log.exception(f"Unexpected error listing modules: {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
     
     def get_module(self, name: str) -> dict[str, Any]:
@@ -133,7 +133,7 @@ class UnityController:
             log.error(f"Registry error getting module '{name}': {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error getting module '{name}': {e}")
+            log.exception(f"Unexpected error getting module '{name}': {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
     
     def get_module_dependencies(self, name: str) -> dict[str, Any]:
@@ -168,7 +168,7 @@ class UnityController:
             log.error(f"Registry error getting dependencies for '{name}': {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error getting dependencies for '{name}': {e}")
+            log.exception(f"Unexpected error getting dependencies for '{name}': {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
     
     def find_dependents(self, name: str) -> dict[str, Any]:
@@ -195,7 +195,7 @@ class UnityController:
             log.error(f"Registry error finding dependents for '{name}': {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error finding dependents for '{name}': {e}")
+            log.exception(f"Unexpected error finding dependents for '{name}': {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
     
     # --- Registry Management Operations ---
@@ -243,7 +243,7 @@ class UnityController:
             log.error(f"Registry error during refresh: {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error during refresh: {e}")
+            log.exception(f"Unexpected error during refresh: {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
     
     def get_registry_status(self) -> dict[str, Any]:
@@ -265,7 +265,7 @@ class UnityController:
             log.error(f"Registry error getting status: {e}")
             return {"success": False, "error": str(e)}
         except Exception as e:
-            log.error(f"Unexpected error getting status: {e}")
+            log.exception(f"Unexpected error getting status: {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
 
 

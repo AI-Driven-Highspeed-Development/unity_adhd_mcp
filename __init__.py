@@ -26,9 +26,6 @@ sys.path.insert(0, project_root)
 
 from mcps.unity_mcp.unity_mcp import mcp
 from mcps.unity_mcp.unity_controller import UnityController, get_unity_controller
-from mcps.unity_mcp.refresh import main as mcp_refresh_main
-
-mcp_refresh_main()
 
 __all__ = [
     "mcp",
