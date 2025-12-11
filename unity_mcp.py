@@ -123,6 +123,22 @@ def get_registry_status() -> dict:
     return _get_controller().get_registry_status()
 
 
+@mcp.tool()
+def generate_registry_report() -> dict:
+    """Generate a markdown documentation report from the Unity module registry.
+    
+    Creates a comprehensive report with:
+    - Module counts by type (core, manager, shared, feature, level, thirdparty, extension)
+    - Dependency graph visualization (Mermaid diagram)
+    - Modules missing module.yaml files
+    - Orphaned modules (modules with no dependents or dependencies)
+    
+    Returns:
+        dict with success status, report_path, and summary statistics
+    """
+    return _get_controller().generate_report()
+
+
 # --- Entry Point ---
 
 

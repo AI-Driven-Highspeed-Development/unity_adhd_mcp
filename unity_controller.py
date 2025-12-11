@@ -267,6 +267,27 @@ class UnityController:
         except Exception as e:
             log.exception(f"Unexpected error getting status: {e}")
             return {"success": False, "error": f"Unexpected error: {e}"}
+    
+    def generate_report(self) -> dict[str, Any]:
+        """
+        Generate a markdown documentation report from the registry.
+        
+        Creates a comprehensive report with module counts, dependency graph,
+        modules missing module.yaml, and orphaned modules.
+        
+        Returns:
+            dict with success status, report_path, and summary statistics.
+        """
+        try:
+            registry = self._get_registry()
+            result = registry.generate_report()
+            return result
+        except UnityModuleRegistryError as e:
+            log.error(f"Registry error generating report: {e}")
+            return {"success": False, "error": str(e)}
+        except Exception as e:
+            log.exception(f"Unexpected error generating report: {e}")
+            return {"success": False, "error": f"Unexpected error: {e}"}
 
 
 # --- Module-level singleton ---

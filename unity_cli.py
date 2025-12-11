@@ -74,6 +74,12 @@ def get_status_cmd(args: argparse.Namespace) -> int:
     return _print_result(result)
 
 
+def generate_report_cmd(args: argparse.Namespace) -> int:
+    """Generate markdown registry report."""
+    result = _get_controller().generate_report()
+    return _print_result(result)
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # CLI Registration
 # ─────────────────────────────────────────────────────────────────────────────
@@ -131,6 +137,11 @@ def register_cli() -> None:
                 name="status",
                 help="Get registry status and statistics",
                 handler="mcps.unity_mcp.unity_cli:get_status_cmd",
+            ),
+            Command(
+                name="report",
+                help="Generate markdown registry report",
+                handler="mcps.unity_mcp.unity_cli:generate_report_cmd",
             ),
         ],
     ))
